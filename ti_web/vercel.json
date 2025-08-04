@@ -1,19 +1,14 @@
 {
-"version": 2,
-"builds": [
-{
-"src": "<projectname>/wsgi.py",
-"use": "@vercel/python",
-"config": { "runtime": "python3.9" }
-},
-{
-"src": "build_files.sh",
-"use": "@vercel/static-build",
-"config": { "distDir": "staticfiles" }
-}
-],
-"routes": [
-{ "src": "/static/(.*)", "dest": "/static/$1" },
-{ "src": "/(.*)", "dest": "<projectname>/wsgi.py" }
-]
+  "builds": [
+    {
+      "src": "ti_web/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ti_web/wsgi.py"
+    }
+  ]
 }
