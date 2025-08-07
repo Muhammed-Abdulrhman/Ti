@@ -1,14 +1,22 @@
 {
   "builds": [
     {
-      "src": "ti_web/wsgi.py",
+      "src": "api/index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "staticfiles/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "ti_web/wsgi.py"
+      "dest": "api/index.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "ti_web.settings",
+    "PYTHONUNBUFFERED": "1"
+  }
 }
